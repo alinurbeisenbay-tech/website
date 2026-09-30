@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unect Talks — Register</title>
-  <meta name="description" content="Unect Talks — an evening of ideas with 7 speakers. Reserve your seat." />
-  <meta property="og:title" content="Unect Talks" />
+  <title>unect talks. — Register</title>
+  <meta name="description" content="unect talks — an evening of ideas with 7 speakers in Doha. Reserve your seat." />
+  <meta property="og:title" content="unect talks." />
   <meta property="og:description" content="7 speakers. One evening of ideas. Reserve your seat." />
-  <meta property="og:image" content="assets/hero-doha.jpg" />
+  <meta property="og:image" content="assets/hero-doha-bw.jpg" />
+  <meta name="theme-color" content="#0a0a0a" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -18,23 +19,25 @@
   <!-- ============ HERO ============ -->
   <header class="hero">
     <nav class="nav">
-      <span class="logo">Unect<span>Talks</span></span>
-      <a href="#register" class="btn btn-small">Register</a>
+      <a href="#" class="brand" aria-label="unect talks home">
+        <img src="assets/logos/unect-white.png" alt="unect." width="629" height="142" />
+      </a>
+      <a href="#register" class="btn btn-light btn-small">register</a>
     </nav>
 
     <div class="hero-content">
-      <p class="eyebrow">An evening of ideas</p>
-      <h1>Unect Talks</h1>
+      <p class="eyebrow">unect &times; qazaq house present</p>
+      <h1>unect talks<span class="dot">.</span></h1>
       <p class="tagline">7 speakers. 7 stories. One conversation worth being part of.</p>
 
       <!-- TODO: replace with real date / time / venue -->
       <ul class="meta">
-        <li><span class="meta-label">Date</span><span>To be announced</span></li>
-        <li><span class="meta-label">Time</span><span>To be announced</span></li>
-        <li><span class="meta-label">Venue</span><span>Doha, Qatar</span></li>
+        <li><span class="meta-label">date</span><span>To be announced</span></li>
+        <li><span class="meta-label">time</span><span>To be announced</span></li>
+        <li><span class="meta-label">venue</span><span>Doha, Qatar</span></li>
       </ul>
 
-      <a href="#register" class="btn">Reserve your seat</a>
+      <a href="#register" class="btn btn-light">reserve your seat &rarr;</a>
     </div>
 
     <a href="#about" class="scroll-hint" aria-label="Scroll down">&#8595;</a>
@@ -43,21 +46,23 @@
   <main>
     <!-- ============ ABOUT ============ -->
     <section id="about" class="section about">
-      <div class="container narrow">
-        <p class="eyebrow dark">About the event</p>
-        <h2>Where ideas connect</h2>
-        <!-- TODO: replace with the real event description -->
-        <p class="lead">
-          Unect Talks brings together seven speakers to share short, powerful talks
-          on the ideas, experiences and lessons that shaped them. Expect honest stories,
-          practical insights and plenty of time to meet people who think like you — and
-          people who don't.
-        </p>
-
-        <div class="stats">
-          <div><strong>7</strong><span>Speakers</span></div>
-          <div><strong>1</strong><span>Evening</span></div>
-          <div><strong>&infin;</strong><span>Connections</span></div>
+      <div class="container">
+        <div class="split">
+          <h2>about<span class="dot">.</span></h2>
+          <div>
+            <!-- TODO: replace with the real event description -->
+            <p class="lead">
+              unect talks brings together seven speakers to share short, powerful talks
+              on the ideas, experiences and lessons that shaped them. Expect honest stories,
+              practical insights and plenty of time to meet people who think like you — and
+              people who don't.
+            </p>
+            <div class="stats">
+              <div><strong>7</strong><span>speakers</span></div>
+              <div><strong>1</strong><span>evening</span></div>
+              <div><strong>&infin;</strong><span>connections</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -65,8 +70,10 @@
     <!-- ============ SPEAKERS ============ -->
     <section id="speakers" class="section speakers">
       <div class="container">
-        <p class="eyebrow dark">Line-up</p>
-        <h2>Meet the speakers</h2>
+        <div class="section-head">
+          <h2>speakers<span class="dot">.</span></h2>
+          <p>seven voices, one stage.</p>
+        </div>
         <div class="speaker-grid" id="speaker-grid"><!-- filled by script.js --></div>
       </div>
     </section>
@@ -75,30 +82,30 @@
     <section id="register" class="section register">
       <div class="container register-inner">
         <div class="register-copy">
-          <p class="eyebrow">Free registration</p>
-          <h2>Reserve your seat</h2>
+          <h2>register<span class="dot">.</span></h2>
           <p>Seats are limited. Leave your name and WhatsApp number and we'll send you
              the confirmation and event details there.</p>
+          <p class="free">free entry &middot; limited seats</p>
         </div>
 
         <form id="register-form" class="form" novalidate>
           <div class="field">
-            <label for="name">Full name</label>
+            <label for="name">full name</label>
             <input id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" required />
             <small class="error" data-for="name"></small>
           </div>
 
           <div class="field">
-            <label for="phone">WhatsApp number</label>
+            <label for="phone">whatsapp number</label>
             <div class="phone-row">
               <select id="country" name="country" aria-label="Country code">
                 <option value="+974" selected>🇶🇦 +974</option>
+                <option value="+7">🇰🇿 +7</option>
                 <option value="+971">🇦🇪 +971</option>
                 <option value="+966">🇸🇦 +966</option>
                 <option value="+965">🇰🇼 +965</option>
                 <option value="+973">🇧🇭 +973</option>
                 <option value="+968">🇴🇲 +968</option>
-                <option value="+7">🇰🇿 +7</option>
                 <option value="+90">🇹🇷 +90</option>
                 <option value="+44">🇬🇧 +44</option>
                 <option value="+1">🇺🇸 +1</option>
@@ -118,14 +125,42 @@
           <!-- honeypot: hidden from humans, catches bots -->
           <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" />
 
-          <button type="submit" class="btn btn-block">Register</button>
+          <button type="submit" class="btn btn-dark btn-block">register &rarr;</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
 
         <div class="success" id="success" hidden>
           <div class="check">&#10003;</div>
-          <h3>You're on the list!</h3>
-          <p>Thank you for registering for Unect Talks. We'll send the details to your WhatsApp soon.</p>
+          <h3>you're on the list<span class="dot">.</span></h3>
+          <p>Thank you for registering for unect talks. We'll send the details to your WhatsApp soon.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ORGANIZERS ============ -->
+    <section id="organizers" class="section organizers">
+      <div class="container">
+        <div class="section-head">
+          <h2>organized by<span class="dot">.</span></h2>
+          <p>follow us for updates.</p>
+        </div>
+
+        <div class="org-grid">
+          <a class="org" href="https://www.instagram.com/unect.doha/" target="_blank" rel="noopener">
+            <div class="org-logo">
+              <img src="assets/logos/unect-black.png" alt="unect." width="629" height="142" />
+            </div>
+            <img class="qr" src="assets/logos/qr-unect-black.png" alt="Instagram QR code for @unect.doha" width="520" height="597" loading="lazy" />
+            <span class="handle">@unect.doha &nearr;</span>
+          </a>
+
+          <a class="org" href="https://www.instagram.com/qazaqhouse.doha/" target="_blank" rel="noopener">
+            <div class="org-logo">
+              <img src="assets/logos/qazaq-house-black.png" alt="Qazaq House" width="800" height="370" class="qh" />
+            </div>
+            <img class="qr" src="assets/logos/qr-qazaq-house-black.png" alt="Instagram QR code for @qazaqhouse.doha" width="520" height="597" loading="lazy" />
+            <span class="handle">@qazaqhouse.doha &nearr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -133,10 +168,16 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <span class="logo">Unect<span>Talks</span></span>
-      <!-- TODO: replace with real contacts / socials -->
-      <span>Questions? <a href="#">Contact the organizers</a></span>
-      <span>&copy; <span id="year"></span> Unect Talks</span>
+      <div class="footer-logos">
+        <img src="assets/logos/unect-white.png" alt="unect." class="f-unect" />
+        <span class="x">&times;</span>
+        <img src="assets/logos/qazaq-house-white.png" alt="Qazaq House" class="f-qh" />
+      </div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/unect.doha/" target="_blank" rel="noopener">instagram @unect.doha</a>
+        <a href="https://www.instagram.com/qazaqhouse.doha/" target="_blank" rel="noopener">instagram @qazaqhouse.doha</a>
+      </div>
+      <span class="copy">&copy; <span id="year"></span> unect talks.</span>
     </div>
   </footer>
 

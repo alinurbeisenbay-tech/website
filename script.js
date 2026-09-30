@@ -5,7 +5,7 @@
 const FORM_ENDPOINT = "";
 
 // Speakers — replace placeholders with real data. `photo` is a path like
-// "assets/speakers/jane.jpg"; leave it empty to show initials instead.
+// "assets/speakers/jane.jpg"; leave it empty to show the speaker number instead.
 const SPEAKERS = [
   { name: "Speaker One",   role: "Title, Company", topic: "Talk title coming soon", photo: "" },
   { name: "Speaker Two",   role: "Title, Company", topic: "Talk title coming soon", photo: "" },
@@ -17,14 +17,10 @@ const SPEAKERS = [
 ];
 
 // ================== SPEAKERS ==================
-function initials(name) {
-  return name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
-}
-
 function renderSpeakers() {
   const grid = document.getElementById("speaker-grid");
   grid.innerHTML = "";
-  SPEAKERS.forEach((s) => {
+  SPEAKERS.forEach((s, i) => {
     const card = document.createElement("article");
     card.className = "speaker";
 
@@ -37,7 +33,7 @@ function renderSpeakers() {
       img.loading = "lazy";
       photo.appendChild(img);
     } else {
-      photo.textContent = initials(s.name);
+      photo.textContent = String(i + 1).padStart(2, "0") + ".";
     }
 
     const body = document.createElement("div");

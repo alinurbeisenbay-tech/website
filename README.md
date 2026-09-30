@@ -2,7 +2,7 @@
 
 Static site: `index.html`, `styles.css`, `script.js`, `assets/`. No build step.
 
-- **Speakers:** edit the `SPEAKERS` array at the top of `script.js`; put photos in `assets/speakers/`.
+- **Speakers:** edit the `SPEAKERS` array at the top of `script.js`; put photos in `assets/speakers/` (they are shown in black & white automatically).
 - **Date / time / venue / description:** edit `index.html` (marked with `TODO`).
 - **Saving registrations:** follow the steps in `google-apps-script.js`, then paste the URL into `FORM_ENDPOINT` in `script.js`. Until then the form runs in demo mode and saves nothing.
 - **Hosting:** GitHub Pages, Netlify or Vercel — upload the folder as is.
