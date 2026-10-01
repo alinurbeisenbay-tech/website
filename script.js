@@ -139,6 +139,35 @@ form.addEventListener("submit", async (e) => {
   form.elements[f].addEventListener("input", () => setError(f, ""))
 );
 
+// ================== COUNTDOWN ==================
+// 16 Oct 2026, 6:00 PM Doha time (UTC+3). The fixed offset keeps the
+// countdown right for visitors in any time zone.
+const EVENT_START = new Date("2026-10-16T18:00:00+03:00");
+
+function startCountdown() {
+  const box = document.getElementById("countdown");
+  const done = document.getElementById("countdown-done");
+  const parts = ["days", "hours", "minutes", "seconds"].map((k) => document.getElementById("cd-" + k));
+  let timer;
+
+  function tick() {
+    const left = EVENT_START - Date.now();
+    if (left <= 0) {
+      clearInterval(timer);
+      box.hidden = true;
+      done.hidden = false;
+      return;
+    }
+    const s = Math.floor(left / 1000);
+    const values = [Math.floor(s / 86400), Math.floor(s / 3600) % 24, Math.floor(s / 60) % 60, s % 60];
+    values.forEach((v, i) => { parts[i].textContent = String(v).padStart(2, "0"); });
+  }
+
+  tick();
+  timer = setInterval(tick, 1000);
+}
+
 // ================== INIT ==================
 renderSpeakers();
+startCountdown();
 document.getElementById("year").textContent = new Date().getFullYear();

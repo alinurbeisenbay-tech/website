@@ -138,6 +138,29 @@ img { max-width: 100%; display: block; }
 }
 .meta-label { font-size: 0.8rem; color: var(--gold); }
 
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 96px));
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.countdown div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 6px 12px;
+  border-radius: 14px;
+  background: var(--gold);
+  color: var(--blue-deep);
+}
+.countdown strong {
+  font: 900 clamp(2rem, 5vw, 2.8rem)/1 var(--display);
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.countdown span { font-size: 0.78rem; font-weight: 600; margin-top: 6px; }
+.countdown-done { font: 900 clamp(1.6rem, 4vw, 2.4rem)/1.1 var(--display); letter-spacing: -0.03em; margin-bottom: 36px; }
+
 .scroll-hint {
   position: absolute;
   bottom: 24px;
@@ -366,7 +389,8 @@ img { max-width: 100%; display: block; }
   .section { padding: 80px 0; }
   .hero-content { padding-bottom: 76px; }
   .brand img { height: 24px; }
-  .meta li { flex: 1 1 100%; }
+  .meta li { flex: 1 1 40%; min-width: 0; }
+  .countdown { grid-template-columns: repeat(4, 1fr); gap: 8px; }
   .form, .success { padding: 24px; }
   .phone-row { grid-template-columns: 116px 1fr; }
   .field select { padding-inline: 10px; }
