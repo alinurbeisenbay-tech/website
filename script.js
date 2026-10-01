@@ -112,7 +112,10 @@ form.addEventListener("submit", async (e) => {
   btn.textContent = "Sending…";
 
   try {
-    if (FORM_ENDPOINT) {
+    if (window.REGISTRATION_STORE) {
+      // set by the hosting page (e.g. the claude.ai preview) to save elsewhere
+      await window.REGISTRATION_STORE(payload);
+    } else if (FORM_ENDPOINT) {
       // text/plain avoids a CORS preflight, which Apps Script doesn't handle.
       await fetch(FORM_ENDPOINT, {
         method: "POST",
@@ -128,7 +131,7 @@ form.addEventListener("submit", async (e) => {
   } catch (err) {
     statusEl.textContent = "Something went wrong. Please check your connection and try again.";
     btn.disabled = false;
-    btn.textContent = "Register";
+    btn.textContent = "Register →";
   }
 });
 
