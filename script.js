@@ -2,7 +2,7 @@
 // Paste your Google Apps Script Web App URL here (see google-apps-script.js).
 // While empty, the form runs in demo mode: it validates and shows the success
 // message, but nothing is saved.
-const FORM_ENDPOINT = "";
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzQGthuKJpBgVqFlQteFLN_ni_7z2AL9DIY1bq9GCntXicUSdwlOo-dyiwBqbma3sfk/exec";
 
 // Speakers — replace placeholders with real data. `photo` is a path like
 // "assets/speakers/jane.jpg"; leave it empty to show the speaker number instead.
