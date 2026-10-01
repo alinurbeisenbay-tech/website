@@ -2,8 +2,8 @@
  * Saves Unect Talks registrations into a Google Sheet.
  *
  * Setup (5 minutes, free):
- * 1. Create a Google Sheet. Add headers in row 1: Submitted at | Name | WhatsApp | Consent
- * 2. In the sheet: Extensions → Apps Script. Replace everything with this file's code. Save.
+ * 1. Create a Google Sheet, then open Extensions → Apps Script FROM that sheet.
+ * 2. Delete everything in Code.gs, paste this file's code, and save.
  * 3. Deploy → New deployment → type "Web app".
  *      Execute as: Me    Who has access: Anyone
  * 4. Copy the Web app URL and paste it into FORM_ENDPOINT in script.js.
@@ -11,6 +11,9 @@
 function doPost(e) {
   const data = JSON.parse(e.postData.contents);
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(["Submitted at", "Name", "WhatsApp", "Updates OK"]);
+  }
   sheet.appendRow([
     new Date(),
     String(data.name || "").slice(0, 200),
