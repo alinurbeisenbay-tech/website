@@ -11,15 +11,11 @@ const LANGS = ["ru", "kz"];
 const HTML_LANG = { ru: "ru", kz: "kk" };
 let lang = pickLang();
 
+// Russian by default; visitors switch to Kazakh with the РУС/ҚАЗ switch.
+// ?lang=kz in the link opens the Kazakh version directly.
 function pickLang() {
-  // ?lang=kz in the link opens the Kazakh version directly
   const fromUrl = new URLSearchParams(location.search).get("lang");
-  if (LANGS.includes(fromUrl)) return fromUrl;
-  try {
-    const saved = localStorage.getItem("lang");
-    if (LANGS.includes(saved)) return saved;
-  } catch (e) { /* storage blocked: fall back to Russian */ }
-  return "ru";
+  return LANGS.includes(fromUrl) ? fromUrl : "ru";
 }
 
 function t(key) {
@@ -28,7 +24,6 @@ function t(key) {
 
 function applyLang(next) {
   lang = next;
-  try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
   document.documentElement.lang = HTML_LANG[lang];
   document.title = t("pageTitle");
 
