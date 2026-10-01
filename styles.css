@@ -34,8 +34,6 @@ h1, h2, h3 {
   text-wrap: balance;
 }
 
-/* the full stop after headings, echoing the "unect." logo */
-.dot { color: var(--accent); }
 
 a { color: inherit; }
 img { max-width: 100%; display: block; }
@@ -92,6 +90,26 @@ img { max-width: 100%; display: block; }
   padding: 26px 0;
 }
 .brand img { height: 30px; width: auto; }
+
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.lang-switch {
+  display: flex;
+  padding: 3px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.3);
+}
+.lang-switch button {
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  font: 700 0.85rem/1 var(--display);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+.lang-switch button[aria-pressed="true"] { background: var(--white); color: var(--ink); }
 
 .hero-content {
   width: min(1180px, 100% - 32px);
@@ -191,7 +209,8 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Sections ---------- */
 .section { padding: 110px 0; }
-.section h2 { font-size: clamp(3rem, 8vw, 6rem); }
+.section h2 { font-size: clamp(2.2rem, 9vw, 6rem); overflow-wrap: break-word; hyphens: auto; }
+.split h2 { font-size: clamp(2.2rem, 4.2vw, 4rem); }
 
 .section-head {
   display: flex;
@@ -271,7 +290,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.4;
 }
 .speaker-topic::before {
-  content: "Talk";
+  content: attr(data-label);
   display: block;
   font: 800 0.8rem/1 var(--display);
   color: var(--accent);
@@ -280,7 +299,6 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Register ---------- */
 .register { background: var(--ink); color: var(--white); }
-.register .dot { color: var(--white); }
 
 .register-inner {
   display: grid;
@@ -403,7 +421,8 @@ img { max-width: 100%; display: block; }
 @media (max-width: 560px) {
   .section { padding: 80px 0; }
   .hero-content { padding-bottom: 76px; }
-  .brand img { height: 24px; }
+  .brand img { height: 22px; }
+  .nav-right .btn-small { display: none; } /* hero button already links to the form */
   .meta li { flex: 1 1 40%; min-width: 0; }
   .cd-unit span { font-size: 0.62rem; letter-spacing: 0.1em; }
   .form, .success { padding: 24px; }

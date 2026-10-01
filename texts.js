@@ -1,0 +1,127 @@
+// All website text, in Russian (ru) and Kazakh (kz).
+// To change wording, edit the text between the quotes. Keep the keys (left side) as they are.
+
+const TEXTS = {
+  ru: {
+    pageTitle: "Unect Talks — регистрация",
+    navRegister: "Регистрация",
+
+    heroEyebrow: "Unect × Qazaq House представляют",
+    heroTitle: "Unect Talks",
+    heroTagline: "7 спикеров. 7 историй. Один вечер, который стоит провести вместе.",
+    dateLabel: "Дата",
+    dateValue: "Пт, 16 октября",
+    timeLabel: "Время",
+    timeValue: "18:00",
+    venueLabel: "Место",
+    venueValue: "Georgetown University",
+    countdownTitle: "До начала",
+    cdDays: "Дни",
+    cdHours: "Часы",
+    cdMinutes: "Минуты",
+    cdSeconds: "Секунды",
+    countdownDone: "Unect Talks уже начался",
+    heroButton: "Забронировать место →",
+
+    aboutTitle: "О\u00a0мероприятии",
+    aboutText: "Unect Talks — это вечер, на котором семь спикеров в коротких выступлениях поделятся идеями, опытом и уроками, которые их сформировали. Честные истории, практические советы и много времени для знакомства с людьми, которые думают так же, как вы, — и с теми, кто думает иначе.",
+    statSpeakers: "спикеров",
+    statEvening: "вечер",
+    statConnections: "знакомств",
+
+    speakersTitle: "Спикеры",
+    speakersSubtitle: "Семь голосов, одна сцена",
+    talkLabel: "Тема",
+    speakerPlaceholderName: "Спикер",
+    speakerPlaceholderRole: "Должность, компания",
+    speakerPlaceholderTopic: "Тема будет объявлена скоро",
+
+    registerTitle: "Регистрация",
+    registerText: "Количество мест ограничено. Оставьте имя и номер WhatsApp — мы пришлём туда подтверждение и детали мероприятия.",
+    registerFree: "Вход свободный · Места ограничены",
+    nameLabel: "Имя и фамилия",
+    namePlaceholder: "Ваше имя и фамилия",
+    phoneLabel: "Номер WhatsApp",
+    countryOther: "Другая",
+    consent: "Я согласен(-на) получать новости о мероприятии в WhatsApp.",
+    submit: "Зарегистрироваться →",
+    sending: "Отправка…",
+    errorName: "Пожалуйста, введите имя.",
+    errorPhone: "Введите корректный номер WhatsApp.",
+    errorPhoneOther: "Введите полный номер с кодом страны, например +44 7700 900123.",
+    errorNetwork: "Что-то пошло не так. Проверьте интернет и попробуйте ещё раз.",
+    successTitle: "Вы в списке!",
+    successText: "Спасибо за регистрацию на Unect Talks. Скоро мы пришлём детали в WhatsApp.",
+
+    organizersTitle: "Организаторы",
+    organizersSubtitle: "Подписывайтесь, чтобы следить за новостями",
+  },
+
+  kz: {
+    pageTitle: "Unect Talks — тіркелу",
+    navRegister: "Тіркелу",
+
+    heroEyebrow: "Unect × Qazaq House ұсынады",
+    heroTitle: "Unect Talks",
+    heroTagline: "7 спикер. 7 оқиға. Бірге өткізуге тұрарлық бір кеш.",
+    dateLabel: "Күні",
+    dateValue: "Жм, 16 қазан",
+    timeLabel: "Уақыты",
+    timeValue: "18:00",
+    venueLabel: "Орны",
+    venueValue: "Georgetown University",
+    countdownTitle: "Басталуына",
+    cdDays: "Күн",
+    cdHours: "Сағат",
+    cdMinutes: "Минут",
+    cdSeconds: "Секунд",
+    countdownDone: "Unect Talks басталды",
+    heroButton: "Орын брондау →",
+
+    aboutTitle: "Іс-шара туралы",
+    aboutText: "Unect Talks — жеті спикер қысқа баяндамаларында өздерін қалыптастырған идеялармен, тәжірибемен және сабақтармен бөлісетін кеш. Шынайы оқиғалар, пайдалы кеңестер және сіз сияқты ойлайтын, әрі басқаша ойлайтын адамдармен танысуға мол уақыт.",
+    statSpeakers: "спикер",
+    statEvening: "кеш",
+    statConnections: "таныстық",
+
+    speakersTitle: "Спикерлер",
+    speakersSubtitle: "Жеті дауыс, бір сахна",
+    talkLabel: "Тақырып",
+    speakerPlaceholderName: "Спикер",
+    speakerPlaceholderRole: "Лауазымы, компания",
+    speakerPlaceholderTopic: "Тақырыбы жақында жарияланады",
+
+    registerTitle: "Тіркелу",
+    registerText: "Орын саны шектеулі. Атыңыз бен WhatsApp нөміріңізді қалдырыңыз — растау мен іс-шара туралы ақпаратты сонда жібереміз.",
+    registerFree: "Кіру тегін · Орын саны шектеулі",
+    nameLabel: "Аты-жөні",
+    namePlaceholder: "Аты-жөніңіз",
+    phoneLabel: "WhatsApp нөмірі",
+    countryOther: "Басқа",
+    consent: "Іс-шара жаңалықтарын WhatsApp арқылы алуға келісемін.",
+    submit: "Тіркелу →",
+    sending: "Жіберілуде…",
+    errorName: "Атыңызды енгізіңіз.",
+    errorPhone: "Дұрыс WhatsApp нөмірін енгізіңіз.",
+    errorPhoneOther: "Ел кодымен толық нөмірді енгізіңіз, мысалы +44 7700 900123.",
+    errorNetwork: "Бірдеңе дұрыс болмады. Интернетті тексеріп, қайта көріңіз.",
+    successTitle: "Сіз тізімдесіз!",
+    successText: "Unect Talks-қа тіркелгеніңізге рахмет. Жақында толық ақпаратты WhatsApp-қа жібереміз.",
+
+    organizersTitle: "Ұйымдастырушылар",
+    organizersSubtitle: "Жаңалықтарды бақылау үшін жазылыңыз",
+  },
+};
+
+// Speakers. Leave `photo` empty to show the speaker number instead
+// (or use a path like "assets/speakers/aigerim.jpg").
+// Empty fields show the placeholder text above.
+const SPEAKERS = [
+  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
+  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
+  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
+  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
+  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
+  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
+  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
+];

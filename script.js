@@ -1,26 +1,58 @@
 // ================== CONFIG ==================
-// Paste your Google Apps Script Web App URL here (see google-apps-script.js).
+// Google Apps Script Web App URL (see google-apps-script.js).
 // While empty, the form runs in demo mode: it validates and shows the success
 // message, but nothing is saved.
 const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzQGthuKJpBgVqFlQteFLN_ni_7z2AL9DIY1bq9GCntXicUSdwlOo-dyiwBqbma3sfk/exec";
 
-// Speakers — replace placeholders with real data. `photo` is a path like
-// "assets/speakers/jane.jpg"; leave it empty to show the speaker number instead.
-const SPEAKERS = [
-  { name: "Speaker One",   role: "Title, Company", topic: "Talk title coming soon", photo: "" },
-  { name: "Speaker Two",   role: "Title, Company", topic: "Talk title coming soon", photo: "" },
-  { name: "Speaker Three", role: "Title, Company", topic: "Talk title coming soon", photo: "" },
-  { name: "Speaker Four",  role: "Title, Company", topic: "Talk title coming soon", photo: "" },
-  { name: "Speaker Five",  role: "Title, Company", topic: "Talk title coming soon", photo: "" },
-  { name: "Speaker Six",   role: "Title, Company", topic: "Talk title coming soon", photo: "" },
-  { name: "Speaker Seven", role: "Title, Company", topic: "Talk title coming soon", photo: "" },
-];
+// Texts and speakers live in texts.js.
+
+// ================== LANGUAGE ==================
+const LANGS = ["ru", "kz"];
+const HTML_LANG = { ru: "ru", kz: "kk" };
+let lang = pickLang();
+
+function pickLang() {
+  // ?lang=kz in the link opens the Kazakh version directly
+  const fromUrl = new URLSearchParams(location.search).get("lang");
+  if (LANGS.includes(fromUrl)) return fromUrl;
+  try {
+    const saved = localStorage.getItem("lang");
+    if (LANGS.includes(saved)) return saved;
+  } catch (e) { /* storage blocked: fall back to Russian */ }
+  return "ru";
+}
+
+function t(key) {
+  return TEXTS[lang][key] ?? TEXTS.ru[key] ?? "";
+}
+
+function applyLang(next) {
+  lang = next;
+  try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
+  document.documentElement.lang = HTML_LANG[lang];
+  document.title = t("pageTitle");
+
+  document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => { el.placeholder = t(el.dataset.i18nPlaceholder); });
+  document.querySelectorAll(".lang-switch button").forEach((b) => {
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+
+  // re-show any visible form errors in the new language
+  ["name", "phone"].forEach((f) => { if (errors[f]) setError(f, errors[f]); });
+  renderSpeakers();
+}
+
+document.querySelectorAll(".lang-switch button").forEach((b) =>
+  b.addEventListener("click", () => applyLang(b.dataset.lang))
+);
 
 // ================== SPEAKERS ==================
 function renderSpeakers() {
   const grid = document.getElementById("speaker-grid");
   grid.innerHTML = "";
   SPEAKERS.forEach((s, i) => {
+    const name = s.name || `${t("speakerPlaceholderName")} ${i + 1}`;
     const card = document.createElement("article");
     card.className = "speaker";
 
@@ -29,23 +61,24 @@ function renderSpeakers() {
     if (s.photo) {
       const img = document.createElement("img");
       img.src = s.photo;
-      img.alt = s.name;
+      img.alt = name;
       img.loading = "lazy";
       photo.appendChild(img);
     } else {
-      photo.textContent = String(i + 1).padStart(2, "0") + ".";
+      photo.textContent = String(i + 1).padStart(2, "0");
     }
 
     const body = document.createElement("div");
     body.className = "speaker-body";
     const h3 = document.createElement("h3");
-    h3.textContent = s.name;
+    h3.textContent = name;
     const role = document.createElement("p");
     role.className = "speaker-role";
-    role.textContent = s.role;
+    role.textContent = (s.role && s.role[lang]) || t("speakerPlaceholderRole");
     const topic = document.createElement("p");
     topic.className = "speaker-topic";
-    topic.textContent = s.topic;
+    topic.dataset.label = t("talkLabel");
+    topic.textContent = (s.topic && s.topic[lang]) || t("speakerPlaceholderTopic");
     body.append(h3, role, topic);
 
     card.append(photo, body);
@@ -57,11 +90,13 @@ function renderSpeakers() {
 const form = document.getElementById("register-form");
 const statusEl = document.getElementById("form-status");
 const successEl = document.getElementById("success");
+const errors = { name: "", phone: "" }; // text keys, so errors follow the language
 
-function setError(field, message) {
+function setError(field, key) {
+  errors[field] = key || "";
   const wrap = form.querySelector(`#${field}`).closest(".field");
-  wrap.classList.toggle("invalid", Boolean(message));
-  form.querySelector(`.error[data-for="${field}"]`).textContent = message || "";
+  wrap.classList.toggle("invalid", Boolean(key));
+  form.querySelector(`.error[data-for="${field}"]`).textContent = key ? t(key) : "";
 }
 
 function validate() {
@@ -70,14 +105,12 @@ function validate() {
   const isOther = form.elements.country.value === "other";
   let ok = true;
 
-  if (name.length < 2) { setError("name", "Please enter your name."); ok = false; }
+  if (name.length < 2) { setError("name", "errorName"); ok = false; }
   else setError("name", "");
 
   const min = isOther ? 8 : 6;
   if (digits.length < min || digits.length > 15) {
-    setError("phone", isOther
-      ? "Enter your full number with country code, e.g. +44 7700 900123."
-      : "Please enter a valid WhatsApp number.");
+    setError("phone", isOther ? "errorPhoneOther" : "errorPhone");
     ok = false;
   } else setError("phone", "");
 
@@ -109,7 +142,7 @@ form.addEventListener("submit", async (e) => {
 
   const btn = form.querySelector("button[type=submit]");
   btn.disabled = true;
-  btn.textContent = "Sending…";
+  btn.textContent = t("sending");
 
   try {
     if (window.REGISTRATION_STORE) {
@@ -129,9 +162,9 @@ form.addEventListener("submit", async (e) => {
     form.hidden = true;
     successEl.hidden = false;
   } catch (err) {
-    statusEl.textContent = "Something went wrong. Please check your connection and try again.";
+    statusEl.textContent = t("errorNetwork");
     btn.disabled = false;
-    btn.textContent = "Register →";
+    btn.textContent = t("submit");
   }
 });
 
@@ -140,7 +173,7 @@ form.addEventListener("submit", async (e) => {
 );
 
 // ================== COUNTDOWN ==================
-// 16 Oct 2026, 6:00 PM Doha time (UTC+3). The fixed offset keeps the
+// 16 Oct 2026, 18:00 Doha time (UTC+3). The fixed offset keeps the
 // countdown right for visitors in any time zone.
 const EVENT_START = new Date("2026-10-16T18:00:00+03:00");
 
@@ -168,6 +201,6 @@ function startCountdown() {
 }
 
 // ================== INIT ==================
-renderSpeakers();
+applyLang(lang);
 startCountdown();
 document.getElementById("year").textContent = new Date().getFullYear();
