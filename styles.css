@@ -100,7 +100,7 @@ img { max-width: 100%; display: block; }
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
 }
 .brand-vol { font: 900 clamp(2rem, 3.6vw, 3rem)/1 var(--display); letter-spacing: -0.01em; }
-.brand-tagline { font-size: clamp(0.95rem, 1.5vw, 1.3rem); font-weight: 500; opacity: 0.92; }
+.brand-tagline { font-size: clamp(1rem, 1.5vw, 1.3rem); font-weight: 700; }
 
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .lang-switch {
@@ -423,8 +423,12 @@ img { max-width: 100%; display: block; }
 @media (max-width: 560px) {
   .section { padding: 80px 0; }
   .hero-content { padding-bottom: 76px; }
-  .brand { gap: 6px; }
-  .brand-tagline { line-height: 1.25; text-wrap: balance; }
+  /* phone: "Vol. 1" + language switch on one row, tagline on its own full-width row */
+  .nav { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "vol lang" "tag tag"; align-items: center; row-gap: 10px; }
+  .brand { display: contents; }
+  .brand-vol { grid-area: vol; }
+  .nav-right { grid-area: lang; }
+  .brand-tagline { grid-area: tag; white-space: nowrap; font-size: min(1.15rem, 4.7vw); }
   .nav-right .btn-small { display: none; } /* hero button already links to the form */
   .meta li { flex: 1 1 40%; min-width: 0; }
   .cd-unit span { font-size: 0.62rem; letter-spacing: 0.1em; }
