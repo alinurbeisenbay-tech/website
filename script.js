@@ -43,6 +43,11 @@ document.querySelectorAll(".lang-switch button").forEach((b) =>
 );
 
 // ================== SPEAKERS ==================
+// a field is either one text for all languages or { ru: "...", kz: "..." }
+function pick(v) {
+  return typeof v === "string" ? v : (v && v[lang]) || "";
+}
+
 function renderSpeakers() {
   const grid = document.getElementById("speaker-grid");
   grid.innerHTML = "";
@@ -69,11 +74,11 @@ function renderSpeakers() {
     h3.textContent = name;
     const role = document.createElement("p");
     role.className = "speaker-role";
-    role.textContent = (s.role && s.role[lang]) || t("speakerPlaceholderRole");
+    role.textContent = pick(s.role) || t("speakerPlaceholderRole");
     const topic = document.createElement("p");
     topic.className = "speaker-topic";
     topic.dataset.label = t("talkLabel");
-    topic.textContent = (s.topic && s.topic[lang]) || t("speakerPlaceholderTopic");
+    topic.textContent = pick(s.topic) || t("speakerPlaceholderTopic");
     body.append(h3, role, topic);
 
     card.append(photo, body);

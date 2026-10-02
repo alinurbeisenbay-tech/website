@@ -113,15 +113,28 @@ const TEXTS = {
   },
 };
 
-// Speakers. Leave `photo` empty to show the speaker number instead
-// (or use a path like "assets/speakers/aigerim.jpg").
-// Empty fields show the placeholder text above.
+// Speakers. Name, role and topic are shown exactly as written, in both languages.
+// Leave `photo` empty to show the speaker number instead.
 const SPEAKERS = [
-  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
-  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
-  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
-  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
-  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
-  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
-  { name: "", photo: "", role: { ru: "", kz: "" }, topic: { ru: "", kz: "" } },
+  { name: "Amirkhan Shapiyev", photo: "assets/speakers/amirkhan-shapiyev.jpg",
+    role: "Senior Consultant at Oliver Wyman",
+    topic: "Как думать, когда времени думать нет" },
+  { name: "Yerkezhan Zholdassova", photo: "assets/speakers/yerkezhan-zholdassova.jpg",
+    role: "Founder & CEO of Hired Valley",
+    topic: "Сначала ты продаёшь мечту. Потом строишь компанию." },
+  { name: "Olzhas Tamabayev", photo: "assets/speakers/olzhas-tamabayev.jpg",
+    role: "Chief Operating Officer at Snoonu",
+    topic: "От хаоса к системе" },
+  { name: "Danagul Azimzhanova", photo: "",
+    role: "Software Engineer at UBS",
+    topic: "От студенческого проекта к системам, где ошибка уже стоит денег" },
+  { name: "Alibek Tnaliyev", photo: "",
+    role: "Chief Digital and AI Officer at QIC",
+    topic: "Жүйелі өмір: мақсаттан нәтижеге" },
+  { name: "Akgul Ali", photo: "assets/speakers/akgul-ali.jpg",
+    role: "Travel blogger, founder of Russian Qatar",
+    topic: "Сначала Катар был чужим. Потом я стала показывать его другим." },
+  { name: "Begarys Otarov", photo: "assets/speakers/begarys-otarov.jpg",
+    role: "Managing Partner at G2M Consulting",
+    topic: "Өзі көшіп келді. Енді өзгелердің көшуіне көмектеседі." },
 ];
