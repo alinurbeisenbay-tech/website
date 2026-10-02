@@ -29,7 +29,7 @@ body {
 h1, h2, h3 {
   font-family: var(--display);
   font-weight: 900;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.02em;
   line-height: 0.95;
   text-wrap: balance;
 }
@@ -89,7 +89,17 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
   padding: 26px 0;
 }
-.brand img { height: 30px; width: auto; }
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  color: var(--white);
+  text-decoration: none;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+.brand-vol { font: 900 1.5rem/1 var(--display); letter-spacing: -0.01em; }
+.brand-tagline { font-size: 0.85rem; font-weight: 500; opacity: 0.9; }
 
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .lang-switch {
@@ -174,7 +184,7 @@ img { max-width: 100%; display: block; }
 .cd-unit { display: flex; flex-direction: column; align-items: center; min-width: 0; }
 .cd-unit strong {
   font: 900 clamp(2.6rem, 7vw, 4.6rem)/1 var(--display);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
   color: var(--white);
 }
@@ -244,7 +254,7 @@ img { max-width: 100%; display: block; }
 .stats strong {
   display: block;
   font: 900 clamp(2.6rem, 6vw, 4rem)/1 var(--display);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 .stats span { color: var(--muted); font-weight: 500; }
 
@@ -273,13 +283,13 @@ img { max-width: 100%; display: block; }
   place-items: center;
   color: var(--white);
   font: 900 3.4rem/1 var(--display);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 /* speaker photos shown in black & white to match the page */
 .speaker-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
 
 .speaker-body { padding: 18px 20px 22px; }
-.speaker-body h3 { font-size: 1.5rem; letter-spacing: -0.03em; }
+.speaker-body h3 { font-size: 1.5rem; letter-spacing: -0.01em; }
 .speaker-role { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
 .speaker-topic {
   margin-top: 16px;
@@ -421,7 +431,8 @@ img { max-width: 100%; display: block; }
 @media (max-width: 560px) {
   .section { padding: 80px 0; }
   .hero-content { padding-bottom: 76px; }
-  .brand img { height: 22px; }
+  .brand-vol { font-size: 1.25rem; }
+  .brand-tagline { font-size: 0.72rem; }
   .nav-right .btn-small { display: none; } /* hero button already links to the form */
   .meta li { flex: 1 1 40%; min-width: 0; }
   .cd-unit span { font-size: 0.62rem; letter-spacing: 0.1em; }
