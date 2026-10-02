@@ -219,8 +219,8 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Sections ---------- */
 .section { padding: 110px 0; }
-.section h2 { font-size: clamp(2.2rem, 9vw, 6rem); overflow-wrap: break-word; hyphens: auto; }
-.split h2 { font-size: clamp(2.2rem, 4.2vw, 4rem); }
+.section h2 { font-size: clamp(2.2rem, 9vw, 6rem); overflow-wrap: break-word; }
+.split h2, .register h2 { font-size: clamp(2.2rem, 4.2vw, 4rem); }
 
 .section-head {
   display: flex;
