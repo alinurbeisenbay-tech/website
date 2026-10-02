@@ -7,7 +7,6 @@ const TEXTS = {
     navRegister: "Регистрация",
 
     heroTitle: "Unect Talks",
-    heroTagline: "7 спикеров. 7 историй. Один вечер, который стоит провести вместе.",
     dateLabel: "Дата",
     dateValue: "Пт, 16 октября",
     timeLabel: "Время",
@@ -60,7 +59,6 @@ const TEXTS = {
     navRegister: "Тіркелу",
 
     heroTitle: "Unect Talks",
-    heroTagline: "7 спикер. 7 оқиға. Бірге өткізуге тұрарлық бір кеш.",
     dateLabel: "Күні",
     dateValue: "Жм, 16 қазан",
     timeLabel: "Уақыты",
