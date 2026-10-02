@@ -90,19 +90,12 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
   padding: 26px 0;
 }
-/* "Vol. 1  Create society, empowering idea" under the title */
+/* "Vol. 1: Create society, empowering idea" under the title */
 .hero-sub {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 16px;
   margin: 18px 0 32px;
-  font-family: var(--display);
-  font-weight: 800;
+  font: 800 clamp(1.25rem, 2.4vw, 2rem)/1.2 var(--display);
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
 }
-.hero-vol { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; line-height: 1; }
-.hero-motto { font-size: clamp(1.1rem, 2vw, 1.6rem); line-height: 1.2; }
 
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .lang-switch {
@@ -126,8 +119,8 @@ img { max-width: 100%; display: block; }
 
 .hero-content {
   width: min(1180px, 100% - 32px);
-  margin: auto auto 0;
-  padding-bottom: 96px;
+  margin: auto;            /* vertically centred, so less empty space above the title */
+  padding: 24px 0 88px;
 }
 
 .hero h1 { font-size: clamp(3.6rem, 13vw, 10rem); text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); }
@@ -419,9 +412,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 560px) {
   .section { padding: 80px 0; }
   .hero-content { padding-bottom: 76px; }
-  .hero-sub { flex-direction: column; gap: 6px; }
-  .hero-vol { font-size: 1.9rem; }
-  .hero-motto { white-space: nowrap; font-size: min(1.2rem, 4.9vw); }
+  .hero-sub { white-space: nowrap; font-size: min(1.25rem, 3.9vw); margin-top: 12px; }
   .nav-right .btn-small { display: none; } /* hero button already links to the form */
   .meta li { flex: 1 1 40%; min-width: 0; }
   .cd-unit span { font-size: 0.62rem; letter-spacing: 0.1em; }
