@@ -200,36 +200,7 @@ function startCountdown() {
   timer = setInterval(tick, 1000);
 }
 
-// ================== MUSIC ==================
-// Plays in the background as soon as the browser allows it. Most browsers
-// block sound until the visitor first taps or presses a key, so we try on load
-// and again on the first interaction. Pauses while the tab is hidden.
-function startMusic() {
-  const music = new Audio("assets/music/background.mp3");
-  music.loop = true;
-  music.volume = 0.35;
-  let started = false;
-
-  const events = ["pointerdown", "touchstart", "keydown"];
-  function tryPlay() {
-    if (started) return;
-    music.play().then(() => {
-      started = true;
-      events.forEach((ev) => document.removeEventListener(ev, tryPlay, true));
-    }).catch(() => { /* blocked until the first interaction */ });
-  }
-
-  events.forEach((ev) => document.addEventListener(ev, tryPlay, true));
-  document.addEventListener("visibilitychange", () => {
-    if (!started) return;
-    if (document.hidden) music.pause();
-    else music.play().catch(() => {});
-  });
-  tryPlay();
-}
-
 // ================== INIT ==================
 applyLang(lang);
 startCountdown();
-startMusic();
 document.getElementById("year").textContent = new Date().getFullYear();
